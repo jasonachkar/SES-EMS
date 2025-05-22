@@ -1,0 +1,5 @@
+<h3>Import Employees from CSV</h3>
+<input type="file" accept=".csv" (change)="onFileSelected($event)">
+<div *ngIf="uploading">Uploading...</div>
+<div>{{result}}</div>
+<button routerLink="/employees">Back to Employees</button>

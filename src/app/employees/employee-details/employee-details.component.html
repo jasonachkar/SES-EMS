@@ -1,0 +1,7 @@
+<div *ngIf="employee">
+  <h3>{{employee.firstName}} {{employee.lastName}}</h3>
+  <p>Email: {{employee.workEmail}}</p>
+  <p>Type: {{employee.employmentType}}</p>
+  <p>Hours/Week: {{employee.hoursPerWeek}}</p>
+  <button routerLink="/employees">Back to list</button>
+</div>

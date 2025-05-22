@@ -1,0 +1,75 @@
+<div class="container mt-5">
+  <div class="card shadow rounded">
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">{{ isEdit ? 'Edit' : 'Create' }} Employee</h4>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="save()" #empForm="ngForm">
+        <div class="row mb-3">
+          <div class="col">
+            <label class="form-label">First Name</label>
+            <input class="form-control" [(ngModel)]="employee.firstName" name="firstName" required>
+          </div>
+          <div class="col">
+            <label class="form-label">Last Name</label>
+            <input class="form-control" [(ngModel)]="employee.lastName" name="lastName" required>
+          </div>
+          <div class="col">
+            <label class="form-label">Middle Name</label>
+            <input class="form-control" [(ngModel)]="employee.middleName" name="middleName">
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col">
+            <label class="form-label">Work Phone</label>
+            <input class="form-control" [(ngModel)]="employee.workPhone" name="workPhone">
+          </div>
+          <div class="col">
+            <label class="form-label">Work Email</label>
+            <input class="form-control" [(ngModel)]="employee.workEmail" name="workEmail" required>
+          </div>
+          <div class="col">
+            <label class="form-label">Personal Phone</label>
+            <input class="form-control" [(ngModel)]="employee.personalPhone" name="personalPhone">
+          </div>
+          <div class="col">
+            <label class="form-label">Personal Email</label>
+            <input class="form-control" [(ngModel)]="employee.personalEmail" name="personalEmail">
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col">
+            <label class="form-label">Hours per Week</label>
+            <input type="number" class="form-control" [(ngModel)]="employee.hoursPerWeek" name="hoursPerWeek" required>
+          </div>
+          <div class="col">
+            <label class="form-label">Employment Type</label>
+            <select class="form-select" [(ngModel)]="employee.employmentType" name="employmentType" required>
+              <option value="FullTime">Full Time</option>
+              <option value="PartTime">Part Time</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col">
+            <label class="form-label">Titles</label>
+            <select class="form-select" multiple [(ngModel)]="employee.titleIds" name="titleIds">
+              <option *ngFor="let title of titles" [value]="title.id!">{{ title.name }}</option>
+            </select>
+          </div>
+          <div class="col">
+            <label class="form-label">Departments</label>
+            <select class="form-select" multiple [(ngModel)]="employee.departmentIds" name="departmentIds">
+              <option *ngFor="let dept of departments" [value]="dept.id!">{{ dept.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 mt-3">{{ isEdit ? 'Update' : 'Create' }} Employee</button>
+      </form>
+    </div>
+  </div>
+</div>

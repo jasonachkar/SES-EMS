@@ -1,0 +1,20 @@
+<div class="container mt-5">
+  <div class="card shadow rounded">
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">{{ isEdit ? 'Edit' : 'Create' }} Department</h4>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="save()">
+        <div class="mb-3">
+          <label class="form-label">Department Name</label>
+          <input class="form-control" [(ngModel)]="department.name" name="name" placeholder="Department Name" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Description</label>
+          <input class="form-control" [(ngModel)]="department.description" name="description" placeholder="Description">
+        </div>
+        <button type="submit" class="btn btn-primary w-100">{{ isEdit ? 'Update' : 'Create' }}</button>
+      </form>
+    </div>
+  </div>
+</div>

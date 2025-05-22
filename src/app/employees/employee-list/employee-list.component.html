@@ -1,0 +1,61 @@
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Employee List</h2>
+    <div>
+      <button class="btn btn-success me-2" routerLink="/employees/new">Add Employee</button>
+      <button class="btn btn-secondary" routerLink="/csv-import">Import CSV</button>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped align-middle">
+      <thead class="table-primary">
+        <tr>
+          <th>Id</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Personal Phone</th>
+          <th>Work Phone</th>
+          <th>Personal Email</th>
+          <th>Work Email</th>
+          <th>Is Full Time</th>
+          <th>Hours/Week</th>
+          <th>Title(s)</th>
+          <th>Department(s)</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of employees">
+          <td>{{ emp.id }}</td>
+          <td>{{ emp.firstName }}</td>
+          <td>{{ emp.lastName }}</td>
+          <td>{{ emp.personalPhone }}</td>
+          <td>{{ emp.workPhone }}</td>
+          <td>{{ emp.personalEmail }}</td>
+          <td>{{ emp.workEmail }}</td>
+          <td>
+            <span [ngClass]="{'text-success': emp.employmentType === 'FullTime', 'text-danger': emp.employmentType !== 'FullTime'}">
+              {{ emp.employmentType === 'FullTime' ? 'TRUE' : 'FALSE' }}
+            </span>
+          </td>
+          <td>{{ emp.hoursPerWeek }}</td>
+          <td>
+            <span *ngFor="let titleId of emp.titleIds; let last = last">
+              {{ getTitleName(titleId) }}<span *ngIf="!last">, </span>
+            </span>
+          </td>
+          <td>
+            <span *ngFor="let deptId of emp.departmentIds; let last = last">
+              {{ getDepartmentName(deptId) }}<span *ngIf="!last">, </span>
+            </span>
+          </td>
+          <td>
+            <button class="btn btn-info btn-sm me-1" [routerLink]="['/employees', emp.id]">View</button>
+            <button class="btn btn-warning btn-sm me-1" [routerLink]="['/employees', emp.id, 'edit']">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteEmployee(emp.id!)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
