@@ -6,6 +6,10 @@
       <button class="btn btn-secondary" routerLink="/csv-import">Import CSV</button>
     </div>
   </div>
+  <div class="input-group mb-3">
+    <input [(ngModel)]="searchTerm" class="form-control" placeholder="Search employees..." (keyup.enter)="onSearch()" />
+    <button class="btn btn-outline-primary" (click)="onSearch()">Search</button>
+  </div>
   <div class="table-responsive">
     <table class="table table-bordered table-striped align-middle">
       <thead class="table-primary">
